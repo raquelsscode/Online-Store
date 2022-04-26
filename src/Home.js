@@ -2,13 +2,12 @@ import React from 'react';
 import { getCategories, getProductsFromCategoryAndQuery } from './services/api';
 
 class Home extends React.Component {
-constructor() {
-  super();
-
-  this.state = {
-    categories: [],
-  };
-}
+//   constructor() {
+//     super();
+//     this.state = {
+//       categories: [],
+//     };
+// }
 
   render() {
     return (
