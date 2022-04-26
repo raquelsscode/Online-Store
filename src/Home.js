@@ -1,9 +1,25 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      redirectTo: '',
+    };
+  }
+
+  CartButtonClick = () => {
+    this.setState({
+      redirectTo: '/carrinho',
+    });
+  }
+
   render() {
+    const { redirectTo } = this.state;
     return (
       <div>
+        <Redirect to={ redirectTo } />
         <input
           type="text"
           placeholder="Digite aqui o produto"
@@ -11,6 +27,14 @@ class Home extends React.Component {
 
         <button type="button">
           Pesquisar
+        </button>
+
+        <button
+          data-testid="shopping-cart-button"
+          type="button"
+          onClick={ this.CartButtonClick }
+        >
+          Carrinho
         </button>
 
         <p
