@@ -134,5 +134,5 @@ class Home extends React.Component {
     );
   }
 }
-// teste
+
 export default Home;
