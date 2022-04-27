@@ -1,0 +1,5 @@
+.listOfCategories {
+  display: flex;
+  flex-wrap: wrap;
+  width: 10rem;
+}
