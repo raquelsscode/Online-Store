@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import Home from './Components/Home';
+import Home from './components/Home';
 import Carrinho from './Carrinho';
 // import { getCategories } from './services/api';
 
