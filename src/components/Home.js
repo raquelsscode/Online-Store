@@ -1,7 +1,7 @@
 import React from 'react';
-import ItemCard from './components/ItemCard';
-import NotFound from './components/NotFound';
-import { getProductsFromCategoryAndQuery } from './services/api';
+import ItemCard from './ItemCard';
+import NotFound from './NotFound';
+import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class Home extends React.Component {
   constructor() {

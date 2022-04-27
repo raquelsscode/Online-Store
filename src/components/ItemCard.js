@@ -9,10 +9,10 @@ class ItemCard extends React.Component {
       price } = this.props;
 
     return (
-      <div data-testid="product">
+      <div>
         <p>{ title }</p>
         <img src={ thumbnail } alt={ title } />
-        <span>{`Valor ${price}`}</span>
+        <span>{`Valor: ${price}`}</span>
       </div>
     );
   }
