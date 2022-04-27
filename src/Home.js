@@ -1,10 +1,13 @@
 import React from 'react';
+import { getCategories, getProductsFromCategoryAndQuery } from './services/api';
+
 import { Redirect } from 'react-router-dom';
 
 class Home extends React.Component {
   constructor() {
     super();
     this.state = {
+      categories: [],
       redirectTo: '',
     };
   }
@@ -29,6 +32,7 @@ class Home extends React.Component {
           Pesquisar
         </button>
 
+
         <button
           data-testid="shopping-cart-button"
           type="button"
@@ -42,6 +46,7 @@ class Home extends React.Component {
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
+
       </div>
     );
   }
