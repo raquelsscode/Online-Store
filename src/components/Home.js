@@ -118,7 +118,7 @@ class Home extends React.Component {
         <div>
           { searchFail ? <NotFound />
             : itemList.map((element) => (
-              <div key={ element.id }>
+              <div data-testid="product" key={ element.id }>
                 <ItemCard
                   thumbnail={ element.thumbnail }
                   title={ element.title }
@@ -134,5 +134,5 @@ class Home extends React.Component {
     );
   }
 }
-// teste
+
 export default Home;
