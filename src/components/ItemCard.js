@@ -11,17 +11,17 @@ class ItemCard extends React.Component {
     return (
       <div data-testid="product">
         <p>{ title }</p>
-        <image src={ thumbnail } alt={ title } />
-        <span>{ price }</span>
+        <img src={ thumbnail } alt={ title } />
+        <span>{`Valor ${price}`}</span>
       </div>
     );
   }
 }
 
 ItemCard.propTypes = {
-  thumbnail: PropTypes.string(PropTypes.any).isRequired,
-  title: PropTypes.string(PropTypes.any).isRequired,
-  price: PropTypes.number(PropTypes.any).isRequired,
+  thumbnail: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default ItemCard;

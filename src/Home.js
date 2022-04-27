@@ -1,5 +1,6 @@
 import React from 'react';
-// import ItemCard from './components/ItemCard';
+import ItemCard from './components/ItemCard';
+import NotFound from './components/NotFound';
 import { getProductsFromCategoryAndQuery } from './services/api';
 
 class Home extends React.Component {
@@ -8,18 +9,23 @@ class Home extends React.Component {
     this.state = {
       searchInput: '',
       saveInput: 'Pesquise um produto',
-      // itemList: [],
+      itemList: [],
+      searchFail: false,
     };
   }
 
   searchInApi = async () => {
     const { searchInput } = this.state;
-    console.log(searchInput);
-
     const returnApi = await getProductsFromCategoryAndQuery(null, searchInput);
     const { results } = returnApi;
-    // this.setState({ itemList: results });
-    console.log(results);
+    if (!results) {
+      this.setState({ searchFail: true });
+    } else {
+      this.setState({
+        itemList: results,
+        searchFail: false,
+      });
+    }
   };
 
   btnClick = (event) => {
@@ -43,7 +49,8 @@ class Home extends React.Component {
     const {
       searchInput,
       saveInput,
-      // itemList,
+      itemList,
+      searchFail,
     } = this.state;
 
     return (
@@ -51,6 +58,7 @@ class Home extends React.Component {
 
         <input
           type="text"
+          data-testid="query-input"
           placeholder={ saveInput }
           value={ searchInput }
           onChange={ this.onChange }
@@ -69,19 +77,19 @@ class Home extends React.Component {
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-        {/*
+
         <div>
-          {
-            itemList.map((element) => (
-              <ItemCard
-                key={ element.id }
-                thumbnail={ element.thumbnail }
-                title={ element.thumbnail }
-                price={ element.thumbnail }
-              />
-            ))
-          }
-        </div> */}
+          { searchFail ? <NotFound />
+            : itemList.map((element) => (
+              <div key={ element.id }>
+                <ItemCard
+                  thumbnail={ element.thumbnail }
+                  title={ element.title }
+                  price={ element.price }
+                />
+              </div>
+            ))}
+        </div>
 
       </div>
     );
@@ -89,7 +97,3 @@ class Home extends React.Component {
 }
 
 export default Home;
-
-// imagem = thumbnail
-// nome = title
-// preço = price
