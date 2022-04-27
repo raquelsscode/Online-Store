@@ -1,7 +1,8 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import ItemCard from './ItemCard';
 import NotFound from './NotFound';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import { getProductsFromCategoryAndQuery, getCategories } from '../services/api';
 
 class Home extends React.Component {
   constructor() {
@@ -11,7 +12,20 @@ class Home extends React.Component {
       saveInput: 'Pesquise um produto',
       itemList: [],
       searchFail: false,
+      redirectTo: '',
+      Categories: [],
     };
+    this.GetFetchCategories = this.GetFetchCategories.bind(this);
+  }
+
+  componentDidMount() {
+    this.GetFetchCategories();
+  }
+
+  CartButtonClick = () => {
+    this.setState({
+      redirectTo: '/carrinho',
+    });
   }
 
   searchInApi = async () => {
@@ -45,17 +59,33 @@ class Home extends React.Component {
     });
   }
 
+  ListOfCategories() {
+    const { Categories } = this.state;
+    const list = Categories.map((value) => (
+      <div key={ value.id }>
+        <p data-testid="category">{value.name}</p>
+      </div>
+    ));
+    return list;
+  }
+
+  async GetFetchCategories() {
+    const fetchCategories = await getCategories();
+    this.setState({ Categories: fetchCategories });
+  }
+
   render() {
     const {
       searchInput,
       saveInput,
       itemList,
       searchFail,
+      redirectTo,
     } = this.state;
 
     return (
-      <div>
-
+      <main>
+        <Redirect to={ redirectTo } />
         <input
           type="text"
           data-testid="query-input"
@@ -72,12 +102,19 @@ class Home extends React.Component {
           Pesquisar
         </button>
 
+        <button
+          data-testid="shopping-cart-button"
+          type="button"
+          onClick={ this.CartButtonClick }
+        >
+          Carrinho
+        </button>
+
         <p
           data-testid="home-initial-message"
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-
         <div>
           { searchFail ? <NotFound />
             : itemList.map((element) => (
@@ -90,8 +127,10 @@ class Home extends React.Component {
               </div>
             ))}
         </div>
-
-      </div>
+        <section>
+          {this.ListOfCategories()}
+        </section>
+      </main>
     );
   }
 }
