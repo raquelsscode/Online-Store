@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import ItemCard from './ItemCard';
 import NotFound from './NotFound';
 import { getProductsFromCategoryAndQuery, getCategories } from '../services/api';
-import './Components.css'
+import './Components.css';
 
 class Home extends React.Component {
   constructor() {
@@ -48,14 +48,14 @@ class Home extends React.Component {
   btnClick = (event) => {
     event.preventDefault();
     const { searchInput, SelectedCategories } = this.state;
-    if(SelectedCategories === ''){
+    if (SelectedCategories === '') {
       this.searchInApi(null, searchInput);
-    } else if(SelectedCategories !== ''){
+    } else if (SelectedCategories !== '') {
       // Coloquei esse codigo para o prox requisito quando a pessoa pesquisar
       // Categoria e Input ao mesmo tempo
       this.searchInApi(SelectedCategories, searchInput);
     }
-    
+
     this.setState({
       saveInput: searchInput,
       searchInput: '',
@@ -74,7 +74,7 @@ class Home extends React.Component {
     const list = Categories.map((value) => (
       // Nessa parte estou fazendo que ao clique em uma categoria
       // Seja chamada a função OnClickCategories com o valor do Id dacategoria
-      <div key={ value.id } onClick={() => this.OnClickCategories(value.id) }>
+      <div key={ value.id } onClick={ () => this.OnClickCategories(value.id) }>
         <p data-testid="category">{value.name}</p>
       </div>
     ));
@@ -86,9 +86,10 @@ class Home extends React.Component {
     this.setState({ Categories: fetchCategories });
   }
 
-  OnClickCategories(CategorieId){
-    this.setState({ SelectedCategories: CategorieId})
-    //Aqui estou puxando a função searchInApi com o id da categoria
+  OnClickCategories(CategorieId) {
+    this.setState({ SelectedCategories: CategorieId });
+    // Aqui estou puxando a função searchInApi com o id da categoria
+
     this.searchInApi(CategorieId, null);
   }
 
@@ -133,26 +134,27 @@ class Home extends React.Component {
         >
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-       <section className='CategoriesAndItens'>
-       <section className='Categories'>
-          {this.ListOfCategories()}
+        <section className="CategoriesAndItens">
+          <section className="Categories">
+            {this.ListOfCategories()}
+          </section>
+          <div className="Items">
+            { searchFail ? <NotFound />
+              : itemList.map((element) => (
+                <div data-testid="product" key={ element.id }>
+                  <ItemCard
+                    thumbnail={ element.thumbnail }
+                    title={ element.title }
+                    price={ element.price }
+                  />
+                </div>
+              ))}
+          </div>
         </section>
-       <div className='Items'>
-          { searchFail ? <NotFound />
-            : itemList.map((element) => (
-              <div data-testid="product" key={ element.id }>
-                <ItemCard
-                  thumbnail={ element.thumbnail }
-                  title={ element.title }
-                  price={ element.price }
-                />
-              </div>
-            ))}
-        </div>
-       </section>
       </main>
     );
   }
 }
 
 export default Home;
+
