@@ -1,5 +1,14 @@
 .listOfCategories {
   display: flex;
   flex-wrap: wrap;
-  width: 10rem;
+  width: 300px;
+}
+
+.CategoriesAndItens {
+  display: flex;
+}
+
+.Items {
+  display: flex;
+  flex-wrap: wrap;
 }
