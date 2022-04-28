@@ -51,7 +51,7 @@ class Home extends React.Component {
     if (SelectedCategories === '') {
       this.searchInApi(null, searchInput);
     } else if (SelectedCategories !== '') {
-      // Coloquei esse codigo para o prox requisito quando a pessoa pesquisar
+      // Coloquei esse codigo para o prox requisito quando a pessoa pesquisarr
       // Categoria e Input ao mesmo tempo
       this.searchInApi(SelectedCategories, searchInput);
     }
@@ -74,7 +74,12 @@ class Home extends React.Component {
     const list = Categories.map((value) => (
       // Nessa parte estou fazendo que ao clique em uma categoria
       // Seja chamada a função OnClickCategories com o valor do Id dacategoria
-      <div key={ value.id } onClick={ () => this.OnClickCategories(value.id) }>
+      <div
+        aria-hidden="true"
+        key={ value.id }
+        onKeyDown={ () => this.OnClickCategories(value.id) }
+        onClick={ () => this.OnClickCategories(value.id) }
+      >
         <p data-testid="category">{value.name}</p>
       </div>
     ));
@@ -157,4 +162,3 @@ class Home extends React.Component {
 }
 
 export default Home;
-
