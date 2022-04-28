@@ -74,7 +74,12 @@ class Home extends React.Component {
     const list = Categories.map((value) => (
       // Nessa parte estou fazendo que ao clique em uma categoria
       // Seja chamada a função OnClickCategories com o valor do Id dacategoria
-      <div key={ value.id } onClick={ () => this.OnClickCategories(value.id) }>
+      <div
+        aria-hidden="true"
+        key={ value.id }
+        onKeyDown={ () => this.OnClickCategories(value.id) }
+        onClick={ () => this.OnClickCategories(value.id) }
+      >
         <p data-testid="category">{value.name}</p>
       </div>
     ));
@@ -157,4 +162,3 @@ class Home extends React.Component {
 }
 
 export default Home;
-
