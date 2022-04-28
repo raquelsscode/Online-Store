@@ -51,7 +51,7 @@ class Home extends React.Component {
     if (SelectedCategories === '') {
       this.searchInApi(null, searchInput);
     } else if (SelectedCategories !== '') {
-      // Coloquei esse codigo para o prox requisito quando a pessoa pesquisar
+      // Coloquei esse codigo para o prox requisito quando a pessoa pesquisarr
       // Categoria e Input ao mesmo tempo
       this.searchInApi(SelectedCategories, searchInput);
     }
