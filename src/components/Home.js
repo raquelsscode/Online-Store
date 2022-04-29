@@ -31,6 +31,12 @@ class Home extends React.Component {
     });
   }
 
+  ItemClick = () => {
+    this.setState({
+      redirectTo: '/ProductDetail',
+    });
+  }
+
   searchInApi = async (Categorie, searchInput) => {
     console.log(Categorie, searchInput);
     const returnApi = await getProductsFromCategoryAndQuery(Categorie, searchInput);
@@ -51,7 +57,7 @@ class Home extends React.Component {
     if (SelectedCategories === '') {
       this.searchInApi(null, searchInput);
     } else if (SelectedCategories !== '') {
-      // Coloquei esse codigo para o prox requisito quando a pessoa pesquisarr
+      // Coloquei esse codigo para o prox requisito quando a pessoa pesquisar
       // Categoria e Input ao mesmo tempo
       this.searchInApi(SelectedCategories, searchInput);
     }
@@ -110,43 +116,51 @@ class Home extends React.Component {
     return (
       <main>
         <Redirect to={ redirectTo } />
-        <input
-          type="text"
-          data-testid="query-input"
-          placeholder={ saveInput }
-          value={ searchInput }
-          onChange={ this.onChange }
-        />
+        <div className="Header">
+          <input
+            type="text"
+            data-testid="query-input"
+            placeholder={ saveInput }
+            value={ searchInput }
+            onChange={ this.onChange }
+          />
 
-        <button
-          type="button"
-          data-testid="query-button"
-          onClick={ this.btnClick }
-        >
-          Pesquisar
-        </button>
+          <button
+            type="button"
+            data-testid="query-button"
+            onClick={ this.btnClick }
+          >
+            Pesquisar
+          </button>
 
-        <button
-          data-testid="shopping-cart-button"
-          type="button"
-          onClick={ this.CartButtonClick }
-        >
-          Carrinho
-        </button>
-
-        <p
-          data-testid="home-initial-message"
-        >
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
+          <button
+            data-testid="shopping-cart-button"
+            type="button"
+            onClick={ this.CartButtonClick }
+          >
+            Carrinho
+          </button>
+        </div>
+        <div className="MsgInicial">
+          <p
+            data-testid="home-initial-message"
+          >
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
+        </div>
         <section className="CategoriesAndItens">
           <section className="Categories">
             {this.ListOfCategories()}
           </section>
-          <div className="Items">
+          <div>
             { searchFail ? <NotFound />
               : itemList.map((element) => (
-                <div data-testid="product" key={ element.id }>
+                <div
+                  aria-hidden="true"
+                  data-testid="product"
+                  key={ element.id }
+                  onClick={ this.ItemClick }
+                >
                   <ItemCard
                     thumbnail={ element.thumbnail }
                     title={ element.title }
@@ -162,3 +176,5 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+// itemlist.atributes.map(element) nome = element.name valor= element.value_name

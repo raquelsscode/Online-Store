@@ -6,9 +6,23 @@
 
 .CategoriesAndItens {
   display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
 }
 
-.Items {
+.ItemCard {
+  border: 1px solid black;
+  width: 400px;
+}
+
+.Header {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+  margin-bottom: 0px;
+}
+
+.MsgInicial {
+  display: flex;
+  justify-content: center;
 }
