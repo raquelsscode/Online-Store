@@ -17,12 +17,10 @@ class App extends React.Component {
 
   AddItemOnCart(itemObj) {
     const { itemsOnCart } = this.state;
-    console.log(itemObj);
     this.setState({ itemsOnCart: [...itemsOnCart, itemObj] });
   }
 
   render() {
-    console.log(this.state.itemsOnCart);
     const { itemsOnCart } = this.state;
     return (
       <BrowserRouter>
