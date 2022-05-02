@@ -13,7 +13,7 @@ export default class Carrinho extends Component {
     return (
       <div>
         {emptypage
-          ? (<p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>)
+          ? (<p data-testid="shopping-cart-empty-message">Seu carrinho esta vazio</p>)
           : ''}
       </div>
     );

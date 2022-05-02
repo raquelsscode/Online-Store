@@ -13,6 +13,13 @@ class ItemCard extends React.Component {
         <p>{ title }</p>
         <img src={ thumbnail } alt={ title } />
         <span>{`Valor: ${price}`}</span>
+        <button
+          type="button"
+          data-testid="product-add-to-cart"
+          onClick={ this.AddCartButton }
+        >
+          Adicionar ao carrinho
+        </button>
       </div>
     );
   }
