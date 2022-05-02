@@ -1,7 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link, Switch, BrowserRouter, Route } from 'react-router-dom';
+import Carrinho from '../Carrinho';
 
 class ItemCard extends React.Component {
+  constructor() {
+    super();
+    this.AddToCard = this.AddToCard.bind(this);
+  }
+
+  AddToCard(title, thumbnail, price) {
+    const { AddItemOnCart } = this.props;
+    const newItem = {
+      title,
+      thumbnail,
+      price,
+    };
+    AddItemOnCart(newItem);
+  }
+
   render() {
     const {
       thumbnail,
@@ -13,6 +30,14 @@ class ItemCard extends React.Component {
         <p>{ title }</p>
         <img src={ thumbnail } alt={ title } />
         <span>{`Valor: ${price}`}</span>
+        <button
+          type="button"
+          data-testid="product-add-to-cart"
+          onClick={ () => this.AddToCard(title, thumbnail, price) }
+        >
+          Adicionar ao carrinho
+
+        </button>
       </div>
     );
   }

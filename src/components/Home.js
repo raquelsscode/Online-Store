@@ -107,6 +107,8 @@ class Home extends React.Component {
       redirectTo,
     } = this.state;
 
+    const { AddItemOnCart } = this.props
+
     return (
       <main>
         <Redirect to={ redirectTo } />
@@ -148,6 +150,8 @@ class Home extends React.Component {
               : itemList.map((element) => (
                 <div data-testid="product" key={ element.id }>
                   <ItemCard
+                    {...this.props}
+                    AddItemOnCart={AddItemOnCart}
                     thumbnail={ element.thumbnail }
                     title={ element.title }
                     price={ element.price }
