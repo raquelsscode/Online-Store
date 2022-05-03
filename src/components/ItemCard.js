@@ -47,5 +47,5 @@ ItemCard.propTypes = {
   price: PropTypes.number.isRequired,
   AddItemOnCart: PropTypes.func.isRequired,
 };
-
+//
 export default ItemCard;

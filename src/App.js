@@ -3,7 +3,6 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import Carrinho from './Carrinho';
-import ItemCard from './components/ItemCard';
 // import { getCategories } from './services/api';
 
 class App extends React.Component {
@@ -44,5 +43,5 @@ class App extends React.Component {
     );
   }
 }
-
+//
 export default App;

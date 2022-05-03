@@ -70,3 +70,4 @@ export default class Carrinho extends Component {
 Carrinho.propTypes = {
   CartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+//
