@@ -32,12 +32,6 @@ class Home extends React.Component {
     });
   }
 
-  ItemClick = () => {
-    this.setState({
-      redirectTo: '/item',
-    });
-  }
-
   searchInApi = async (Categorie, searchInput) => {
     const returnApi = await getProductsFromCategoryAndQuery(Categorie, searchInput);
     const { results } = returnApi;
@@ -163,17 +157,19 @@ class Home extends React.Component {
                   data-testid="product"
                   key={ element.id }
                 >
+                  <ItemCard
+                    { ...this.props }
+                    AddItemOnCart={ AddItemOnCart }
+                    thumbnail={ element.thumbnail }
+                    title={ element.title }
+                    price={ element.price }
+                  />
                   <Link
+                    data-testid="product-detail-link"
                     to={ `/product/${element.id}` }
                     key={ element.id }
                   >
-                    <ItemCard
-                      { ...this.props }
-                      AddItemOnCart={ AddItemOnCart }
-                      thumbnail={ element.thumbnail }
-                      title={ element.title }
-                      price={ element.price }
-                    />
+                    <span> + </span>
                   </Link>
                 </div>
               ))}

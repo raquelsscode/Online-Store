@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { Link, Switch, BrowserRouter, Route } from 'react-router-dom';
-// import Carrinho from '../Carrinho';
 
 class ItemCard extends React.Component {
   constructor() {
@@ -27,9 +25,9 @@ class ItemCard extends React.Component {
 
     return (
       <div
-        data-testid="product-detail-link"
         className="ItemCard"
       >
+
         <p>{ title }</p>
         <img src={ thumbnail } alt={ title } />
         <span>{`Valor: ${price}`}</span>
