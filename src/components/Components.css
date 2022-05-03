@@ -18,22 +18,22 @@ img {
   border: 1px solid black;
   border-radius: 15px;
   margin-left: 30px;
-  padding: 10px;
   margin-top: 30px;
+  padding: 10px;
   text-align: center;
   width: 400px;
 }
 
 .ItemDetails {
+  align-content: space-between;
   border: 1px solid black;
   border-radius: 15px;
   display: flex;
-  align-content: space-between;
   justify-content: center;
-  padding: 10px;
-  margin-top: 30px;
   margin-left: 30%;
+  margin-top: 30px;
   margin-right: 30%;
+  padding: 10px;
   text-align: center;
 }
 
