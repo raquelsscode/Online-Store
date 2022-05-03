@@ -1,41 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { getProductById } from '../services/api';
 
-class ProductDetail extends React.Component {
+class ProductDetail extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      product: [],
+    };
+  }
+
+  async componentDidMount() {
+    const { match: { params: { id } } } = this.props;
+    const api = await getProductById(id);
+    this.setState({ product: api });
+  }
+
   render() {
-    const {
-      thumbnail,
-      title,
-      price,
-      atributes,
-    } = this.props;
+    const { product } = this.state;
 
-    return (
-      <div className="ProductDetail">
-        <p>{ title }</p>
-        <img src={ thumbnail } alt={ title } />
-        <span>{`Valor: ${price}`}</span>
-        {
-          atributes.map((element) => (
-            <div key={ element.id }>
-              <p>{ element.name }</p>
-              <p>{ element.value_name }</p>
-            </div>
-          ))
-
-        }
+    return product.length !== 0 && (
+      <div className="ItemDetails">
+        <div>
+          <p data-testid="product-detail-name">{product.title}</p>
+          <img src={ product.thumbnail } alt={ product.title } />
+          <span>{`Valor: ${product.price}`}</span>
+        </div>
       </div>
     );
   }
 }
 
 ProductDetail.propTypes = {
-  thumbnail: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  atributes: PropTypes.arrayOf(PropTypes.any).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 };
 
 export default ProductDetail;
-
-// itemlist.atributes.map(element) nome = element.name valor= element.value_name

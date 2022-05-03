@@ -1,3 +1,7 @@
+img {
+  height: 100px;
+}
+
 .listOfCategories {
   display: flex;
   flex-wrap: wrap;
@@ -12,7 +16,26 @@
 
 .ItemCard {
   border: 1px solid black;
+  border-radius: 15px;
+  padding: 10px;
+  align-content: space-between;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 30px;
   width: 400px;
+}
+
+.ItemDetails {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 10px;
+  align-content: space-between;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .Header {

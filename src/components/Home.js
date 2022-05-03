@@ -1,5 +1,6 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ItemCard from './ItemCard';
 import NotFound from './NotFound';
 import { getProductsFromCategoryAndQuery, getCategories } from '../services/api';
@@ -33,14 +34,14 @@ class Home extends React.Component {
 
   ItemClick = () => {
     this.setState({
-      redirectTo: '/ProductDetail',
+      redirectTo: '/item',
     });
   }
 
   searchInApi = async (Categorie, searchInput) => {
-    console.log(Categorie, searchInput);
     const returnApi = await getProductsFromCategoryAndQuery(Categorie, searchInput);
     const { results } = returnApi;
+    console.log(results);
     if (!results) {
       this.setState({ searchFail: true });
     } else {
@@ -113,6 +114,8 @@ class Home extends React.Component {
       redirectTo,
     } = this.state;
 
+    const { AddItemOnCart } = this.props;
+
     return (
       <main>
         <Redirect to={ redirectTo } />
@@ -159,13 +162,19 @@ class Home extends React.Component {
                   aria-hidden="true"
                   data-testid="product"
                   key={ element.id }
-                  onClick={ this.ItemClick }
                 >
-                  <ItemCard
-                    thumbnail={ element.thumbnail }
-                    title={ element.title }
-                    price={ element.price }
-                  />
+                  <Link
+                    to={ `/product/${element.id}` }
+                    key={ element.id }
+                  >
+                    <ItemCard
+                      { ...this.props }
+                      AddItemOnCart={ AddItemOnCart }
+                      thumbnail={ element.thumbnail }
+                      title={ element.title }
+                      price={ element.price }
+                    />
+                  </Link>
                 </div>
               ))}
           </div>
@@ -175,6 +184,8 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+Home.propTypes = {
+  AddItemOnCart: PropTypes.func.isRequired,
+};
 
-// itemlist.atributes.map(element) nome = element.name valor= element.value_name
+export default Home;
