@@ -10,6 +10,7 @@ export default class Carrinho extends Component {
 
   render() {
     const { emptypage } = this.state;
+    // const { CartItems } = this.props;
     return (
       <div>
         {emptypage

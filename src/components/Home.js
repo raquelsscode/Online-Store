@@ -1,5 +1,6 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ItemCard from './ItemCard';
 import NotFound from './NotFound';
 import { getProductsFromCategoryAndQuery, getCategories } from '../services/api';
@@ -31,10 +32,16 @@ class Home extends React.Component {
     });
   }
 
+  ItemClick = () => {
+    this.setState({
+      redirectTo: '/item',
+    });
+  }
+
   searchInApi = async (Categorie, searchInput) => {
-    console.log(Categorie, searchInput);
     const returnApi = await getProductsFromCategoryAndQuery(Categorie, searchInput);
     const { results } = returnApi;
+    console.log(results);
     if (!results) {
       this.setState({ searchFail: true });
     } else {
@@ -51,7 +58,7 @@ class Home extends React.Component {
     if (SelectedCategories === '') {
       this.searchInApi(null, searchInput);
     } else if (SelectedCategories !== '') {
-      // Coloquei esse codigo para o prox requisito quando a pessoa pesquisarr
+      // Coloquei esse codigo para o prox requisito quando a pessoa pesquisar
       // Categoria e Input ao mesmo tempo
       this.searchInApi(SelectedCategories, searchInput);
     }
@@ -107,51 +114,67 @@ class Home extends React.Component {
       redirectTo,
     } = this.state;
 
+    const { AddItemOnCart } = this.props;
+
     return (
       <main>
         <Redirect to={ redirectTo } />
-        <input
-          type="text"
-          data-testid="query-input"
-          placeholder={ saveInput }
-          value={ searchInput }
-          onChange={ this.onChange }
-        />
+        <div className="Header">
+          <input
+            type="text"
+            data-testid="query-input"
+            placeholder={ saveInput }
+            value={ searchInput }
+            onChange={ this.onChange }
+          />
 
-        <button
-          type="button"
-          data-testid="query-button"
-          onClick={ this.btnClick }
-        >
-          Pesquisar
-        </button>
+          <button
+            type="button"
+            data-testid="query-button"
+            onClick={ this.btnClick }
+          >
+            Pesquisar
+          </button>
 
-        <button
-          data-testid="shopping-cart-button"
-          type="button"
-          onClick={ this.CartButtonClick }
-        >
-          Carrinho
-        </button>
-
-        <p
-          data-testid="home-initial-message"
-        >
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
+          <button
+            data-testid="shopping-cart-button"
+            type="button"
+            onClick={ this.CartButtonClick }
+          >
+            Carrinho
+          </button>
+        </div>
+        <div className="MsgInicial">
+          <p
+            data-testid="home-initial-message"
+          >
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
+        </div>
         <section className="CategoriesAndItens">
           <section className="Categories">
             {this.ListOfCategories()}
           </section>
-          <div className="Items">
+          <div>
             { searchFail ? <NotFound />
               : itemList.map((element) => (
-                <div data-testid="product" key={ element.id }>
-                  <ItemCard
-                    thumbnail={ element.thumbnail }
-                    title={ element.title }
-                    price={ element.price }
-                  />
+                <div
+                  aria-hidden="true"
+                  data-testid="product"
+                  key={ element.id }
+                >
+                  <Link
+                    to={ `/product/${element.id}` }
+                    key={ element.id }
+                  >
+                    <ItemCard
+                      { ...this.props }
+                      AddItemOnCart={ AddItemOnCart }
+                      thumbnail={ element.thumbnail }
+                      title={ element.title }
+                      price={ element.price }
+                    />
+                  </Link>
                 </div>
               ))}
           </div>
@@ -160,5 +183,9 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  AddItemOnCart: PropTypes.func.isRequired,
+};
 
 export default Home;
