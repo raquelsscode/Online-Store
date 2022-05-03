@@ -1,10 +1,11 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ItemCard from './ItemCard';
 import NotFound from './NotFound';
 import { getProductsFromCategoryAndQuery, getCategories } from '../services/api';
 import './Components.css';
+import Cart from './Cart';
 
 class Home extends React.Component {
   constructor() {
@@ -14,7 +15,6 @@ class Home extends React.Component {
       saveInput: 'Pesquise um produto',
       itemList: [],
       searchFail: false,
-      redirectTo: '',
       Categories: [],
       SelectedCategories: '',
     };
@@ -24,12 +24,6 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.GetFetchCategories();
-  }
-
-  CartButtonClick = () => {
-    this.setState({
-      redirectTo: '/carrinho',
-    });
   }
 
   searchInApi = async (Categorie, searchInput) => {
@@ -105,14 +99,12 @@ class Home extends React.Component {
       saveInput,
       itemList,
       searchFail,
-      redirectTo,
     } = this.state;
 
     const { AddItemOnCart } = this.props;
 
     return (
       <main>
-        <Redirect to={ redirectTo } />
         <div className="Header">
           <input
             type="text"
@@ -130,13 +122,8 @@ class Home extends React.Component {
             Pesquisar
           </button>
 
-          <button
-            data-testid="shopping-cart-button"
-            type="button"
-            onClick={ this.CartButtonClick }
-          >
-            Carrinho
-          </button>
+          <Cart />
+
         </div>
         <div className="MsgInicial">
           <p
@@ -168,6 +155,7 @@ class Home extends React.Component {
                     data-testid="product-detail-link"
                     to={ `/product/${element.id}` }
                     key={ element.id }
+                    AddItemOnCart={ AddItemOnCart }
                   >
                     <span> + </span>
                   </Link>
