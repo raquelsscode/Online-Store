@@ -7,9 +7,10 @@ export default class Carrinho extends Component {
     this.state = {
       emptypage: true,
       Items: [],
+      count: 1,
+      buttonDisabled: true,
     };
     this.CheckCart = this.CheckCart.bind(this);
-    this.HandlerChange = this.HandlerChange.bind(this);
   }
 
   componentDidMount() {
@@ -19,16 +20,34 @@ export default class Carrinho extends Component {
     this.CheckCart();
   }
 
+  IncreaseQuantity = () => {
+    this.setState((prevState) => {
+      this.setState({
+        count: prevState.count + 1,
+        buttonDisabled: false,
+      });
+    });
+  }
+
+  DecreaseQuantity = () => {
+    const { count } = this.state;
+    if (count === 2) {
+      this.setState({
+        buttonDisabled: true,
+      });
+    }
+    this.setState((prevState) => {
+      this.setState({
+        count: prevState.count - 1,
+      });
+    });
+  }
+
   CheckCart() {
     const { CartItems } = this.props;
     if (CartItems.length !== 0) {
       this.setState({ emptypage: false });
     }
-  }
-
-  HandlerChange(event, index) {
-    const { Items } = this.state;
-    Items[index].quantity = event.target.value;
   }
 
   AddQuantity() {
@@ -39,17 +58,34 @@ export default class Carrinho extends Component {
 
   ItemCard() {
     const { CartItems } = this.props;
-    const list = CartItems.map((value, index) => (
+    const { count, buttonDisabled } = this.state;
+    const list = CartItems.map((value) => (
       <div key={ value.title }>
         <p data-testid="shopping-cart-product-name">{ value.title }</p>
         <img src={ value.thumbnail } alt={ value.title } />
         <span>{`Valor: ${value.price}`}</span>
         <p
           data-testid="shopping-cart-product-quantity "
-          onChange={ (event) => this.HandlerChange(event, index) }
         >
-          1
+          {value.title}
+          {' '}
+          {count}
         </p>
+        <button
+          type="button"
+          data-testid="product-increase-quantity"
+          onClick={ this.IncreaseQuantity }
+        >
+          +
+        </button>
+        <button
+          type="button"
+          data-testid="product-decrease-quantity"
+          onClick={ this.DecreaseQuantity }
+          disabled={ buttonDisabled }
+        >
+          -
+        </button>
       </div>
     ));
     return list;
