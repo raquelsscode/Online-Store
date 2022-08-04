@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg18"
+   width="285"
+   height="81"
+   viewBox="0 0 285 81"
+   sodipodi:docname="Logo-Online-Store.svg"
+   inkscape:export-filename="Logo-Online-Store.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.1 (ef4d3fba62, 2022-07-19, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs22" />
+  <sodipodi:namedview
+     id="namedview20"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.8358704"
+     inkscape:cx="131.35297"
+     inkscape:cy="43.901866"
+     inkscape:window-width="1294"
+     inkscape:window-height="704"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g24">
+    <g
+       inkscape:groupmode="layer"
+       id="layer1"
+       inkscape:label="Image 1"
+       style="fill:#000000" />
+    <path
+       style="fill:#ffffff"
+       d="M 52.775439,62.116154 Z"
+       id="path186" />
+    <path
+       style="fill:#ffffff"
+       d="M 31.53816,68.359223 Z"
+       id="path190" />
+    <path
+       id="path246"
+       style="fill:#ffffff"
+       d="M 53.386719 4.7636719 C 53.187589 4.7610435 52.986887 4.7621758 52.78125 4.7675781 C 39.620469 5.1133285 40.546875 21.095703 40.546875 21.095703 L 31.421875 21.082031 L 31.486328 67.634766 L 54.554688 67.75 L 54.441406 63.019531 L 36.798828 62.851562 L 36.425781 25.755859 L 69.009766 25.851562 L 69.478516 50.042969 L 55.552734 49.878906 L 55.113281 39.726562 L 59.894531 43.833984 L 60.132812 43.568359 L 62.939453 40.591797 L 52.849609 30.769531 L 42.578125 40.089844 L 46.169922 43.640625 L 50.617188 39.908203 L 50.900391 54.720703 L 73.708984 54.654297 L 73.291016 20.701172 L 65.667969 20.78125 C 65.667969 20.78125 65.931902 4.9292566 53.386719 4.7636719 z M 53.048828 8.2558594 A 8.8026342 12.556561 0 0 1 61.873047 20.751953 L 53.070312 20.8125 L 44.267578 20.8125 A 8.8026342 12.556561 0 0 1 53.048828 8.2558594 z " />
+    <text
+       xml:space="preserve"
+       style="fill:#000000"
+       x="91.757507"
+       y="40.129738"
+       id="text714"><tspan
+         sodipodi:role="line"
+         id="tspan712"
+         x="91.757507"
+         y="40.129738" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28.0631px;line-height:0;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:1.1693"
+       x="84.077293"
+       y="56.778027"
+       id="text815"
+       transform="scale(1.0249456,0.97566156)"><tspan
+         sodipodi:role="line"
+         id="tspan813"
+         x="84.077293"
+         y="56.778027"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28.0631px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:1.1693;fill:#ffffff">Online Store</tspan></text>
+  </g>
+</svg>
