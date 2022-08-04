@@ -1,27 +1,5 @@
-img {
-  height: 100px;
-}
-
-.listOfCategories {
-  display: flex;
-  flex-wrap: wrap;
-  width: 300px;
-}
-
 .CategoriesAndItens {
   display: flex;
-  justify-content: space-evenly;
-}
-
-.ItemCard {
-  align-content: space-between;
-  border: 1px solid black;
-  border-radius: 15px;
-  margin-left: 30px;
-  margin-top: 30px;
-  padding: 10px;
-  text-align: center;
-  width: 400px;
 }
 
 .ItemDetails {
@@ -35,16 +13,4 @@ img {
   margin-top: 30px;
   padding: 10px;
   text-align: center;
-}
-
-.Header {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-  margin-bottom: 1px;
-}
-
-.MsgInicial {
-  display: flex;
-  justify-content: center;
 }

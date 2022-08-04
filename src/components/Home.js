@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ItemCard from './ItemCard';
 import NotFound from './NotFound';
 import { getProductsFromCategoryAndQuery, getCategories } from '../services/api';
 import './Components.css';
 import Cart from './Cart';
+import '../HomeCSS/Home.css';
+import '../fontawesome/css/all.css';
+import logo from '../HomeCSS/Logo-Online-Store.svg';
 
 class Home extends React.Component {
   constructor() {
@@ -70,12 +72,19 @@ class Home extends React.Component {
       // Nessa parte estou fazendo que ao clique em uma categoria
       // Seja chamada a função OnClickCategories com o valor do Id dacategoria
       <div
+        className="list-categories"
         aria-hidden="true"
         key={ value.id }
         onKeyDown={ () => this.OnClickCategories(value.id) }
         onClick={ () => this.OnClickCategories(value.id) }
       >
-        <p data-testid="category">{value.name}</p>
+        <p
+          className="category"
+          data-testid="category"
+        >
+          {value.name}
+
+        </p>
       </div>
     ));
     return list;
@@ -105,26 +114,34 @@ class Home extends React.Component {
 
     return (
       <main>
-        <div className="Header">
-          <input
-            type="text"
-            data-testid="query-input"
-            placeholder={ saveInput }
-            value={ searchInput }
-            onChange={ this.onChange }
-          />
+        <header className="header-container">
+          <div className="logo">
+            <img src={ logo } alt="logo" />
+          </div>
+          <div className="search">
+            <input
+              className="form-control"
+              type="text"
+              data-testid="query-input"
+              placeholder={ saveInput }
+              value={ searchInput }
+              onChange={ this.onChange }
+            />
+            <button
+              type="button"
+              className="button-search"
+              data-testid="query-button"
+              onClick={ this.btnClick }
+            >
+              <i
+                className="fa-solid fa-magnifying-glass"
+              />
+            </button>
 
-          <button
-            type="button"
-            data-testid="query-button"
-            onClick={ this.btnClick }
-          >
-            Pesquisar
-          </button>
+            <Cart />
+          </div>
 
-          <Cart />
-
-        </div>
+        </header>
         <div className="MsgInicial">
           <p
             data-testid="home-initial-message"
@@ -136,7 +153,7 @@ class Home extends React.Component {
           <section className="Categories">
             {this.ListOfCategories()}
           </section>
-          <div>
+          <div className="products">
             { searchFail ? <NotFound />
               : itemList.map((element) => (
                 <div
@@ -150,15 +167,8 @@ class Home extends React.Component {
                     thumbnail={ element.thumbnail }
                     title={ element.title }
                     price={ element.price }
+                    element={ element.id }
                   />
-                  <Link
-                    data-testid="product-detail-link"
-                    to={ `/product/${element.id}` }
-                    key={ element.id }
-                    AddItemOnCart={ AddItemOnCart }
-                  >
-                    <span> + </span>
-                  </Link>
                 </div>
               ))}
           </div>

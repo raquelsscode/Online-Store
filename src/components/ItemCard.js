@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class ItemCard extends React.Component {
   constructor() {
@@ -21,7 +22,8 @@ class ItemCard extends React.Component {
     const {
       thumbnail,
       title,
-      price } = this.props;
+      price, element,
+      AddItemOnCart } = this.props;
 
     return (
       <div
@@ -31,20 +33,37 @@ class ItemCard extends React.Component {
         <p>{ title }</p>
         <img src={ thumbnail } alt={ title } />
         <span>{`Valor: ${price}`}</span>
-        <button
-          type="button"
-          data-testid="product-add-to-cart"
-          onClick={ () => this.AddToCard(title, thumbnail, price) }
-        >
-          Adicionar ao carrinho
+        <div className="container-button">
+          <button
+            className="add-cart-button"
+            type="button"
+            data-testid="product-add-to-cart"
+            onClick={ () => this.AddToCard(title, thumbnail, price) }
+          >
+            Adicionar ao carrinho
 
-        </button>
+          </button>
+          <Link
+            data-testid="product-detail-link"
+            to={ `/product/${element}` }
+            key={ element }
+            AddItemOnCart={ AddItemOnCart }
+          >
+            <button type="button" className="details">
+              {' '}
+              <i className="fa-solid fa-square-plus" />
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }
 }
 
 ItemCard.propTypes = {
+  element: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
