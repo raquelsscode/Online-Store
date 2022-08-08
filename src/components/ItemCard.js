@@ -22,8 +22,7 @@ class ItemCard extends React.Component {
     const {
       thumbnail,
       title,
-      price, element,
-      AddItemOnCart } = this.props;
+      price, element, } = this.props;
 
     return (
       <div
@@ -47,7 +46,7 @@ class ItemCard extends React.Component {
             data-testid="product-detail-link"
             to={ `/product/${element}` }
             key={ element }
-            AddItemOnCart={ AddItemOnCart }
+            // banana={ AddItemOnCart }
           >
             <button type="button" className="details">
               {' '}
@@ -61,9 +60,7 @@ class ItemCard extends React.Component {
 }
 
 ItemCard.propTypes = {
-  element: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  }).isRequired,
+  element: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

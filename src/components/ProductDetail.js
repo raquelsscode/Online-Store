@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getProductById } from '../services/api';
 import Cart from './Cart';
+import './ProductDetail.css';
 
 class ProductDetail extends Component {
   constructor() {
@@ -9,6 +10,7 @@ class ProductDetail extends Component {
 
     this.state = {
       product: [],
+      clickbutton: false,
     };
     this.AddToCard = this.AddToCard.bind(this);
   }
@@ -27,27 +29,44 @@ class ProductDetail extends Component {
       price,
     };
     AddItemOnCart(newItem);
+    this.setState({
+      clickbutton: true,
+    });
+  }
+
+  test() {
+    const { clickbutton } = this.state;
+    if (clickbutton === true) {
+      return (<div className="message">Item Adicionado ao carrinho!</div>);
+    }
+    return console.log('Teste');
   }
 
   render() {
     const { product } = this.state;
 
     return product.length !== 0 && (
-      <div className="ItemDetails">
-        <div>
-          <p data-testid="product-detail-name">{product.title}</p>
-          <img src={ product.thumbnail } alt={ product.title } />
-          <span>{`Valor: ${product.price}`}</span>
-          <button
-            type="button"
-            data-testid="product-detail-add-to-cart"
-            onClick={ () => this.AddToCard(
-              product.title, product.thumbnail, product.price,
-            ) }
-          >
-            Adicionar ao carrinho
-          </button>
-          <Cart />
+      <div>
+        <section className="item-add-sucess">
+          {this.test()}
+        </section>
+        <div className="ItemDetails">
+          <div className="details-card">
+            <p data-testid="product-detail-name">{product.title}</p>
+            <img src={ product.thumbnail } alt={ product.title } />
+            <span>{`Valor: ${product.price}`}</span>
+            <button
+              className="detail-add-to-cart"
+              type="button"
+              data-testid="product-detail-add-to-cart"
+              onClick={ () => this.AddToCard(
+                product.title, product.thumbnail, product.price,
+              ) }
+            >
+              Adicionar ao carrinho
+            </button>
+            <Cart />
+          </div>
         </div>
       </div>
     );

@@ -1,0 +1,45 @@
+.ItemDetails {
+  background-color: #157145;
+  border: none;
+  color: white;
+}
+
+.details-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.details-card img {
+  margin: 20px;
+  width: 250px;
+}
+
+.detail-add-to-cart {
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-family: Raleway , sans-serif;
+  font-size: 18px;
+  height: 55px;
+  margin: 20px;
+  width: 200px;
+}
+
+.item-add-sucess {
+  display: flex;
+  margin-top: 20px;
+  place-content: center;
+}
+
+.message {
+  background-color: #157145;
+  border-radius: 10px;
+  color: white;
+  padding: 20px;
+}
+
