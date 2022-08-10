@@ -1,10 +1,23 @@
-# 🚧 README em construção 🚧
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# Online Store 🛍️ 
+
+Projeto de uma loja Online básica com React e pegando informações da API mercado libre.
+
+# Ferramentas Utilizadas :hammer_and_wrench:
+
+- React
+- Redux
+- HTML
+- CSS
+- Javascript
+
+# Inicialização :heavy_check_mark:
+
+1. Clone o repositório
+Use o comando: 
+```git clone git@github.com:raquelsscode/Online-Store.git```
+2. Entre na pasta do repositório que você acabou de clonar:
+```cd Online-Store```
+3. Instale as dependências
+```npm install```
+4.Installe o react e redux para vizualização
+
